@@ -1,8 +1,8 @@
 @charset "UTF-8";
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 * ::-webkit-scrollbar {
   width: 6px;
@@ -49,8 +49,7 @@ img {
   width: 100%;
   display: block;
   max-width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .container {
@@ -189,3 +188,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+body {
+  background-color: pink;
+}
+
+/*# sourceMappingURL=style.css.map */
