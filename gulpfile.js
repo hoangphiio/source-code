@@ -5,7 +5,6 @@ const postcss = require("gulp-postcss");
 const minify = require("gulp-clean-css");
 const pug = require("gulp-pug");
 const browserSync = require("browser-sync").create();
-const historyFallback = require("connect-history-api-fallback");
 const terser = require("gulp-terser");
 
 // Optimize images
@@ -64,7 +63,6 @@ function watchTask() {
     server: {
       baseDir: "dist",
     },
-    middleware: [historyFallback()],
   });
 
   watch("views/**/*.pug", htmlTask);
@@ -75,8 +73,8 @@ function watchTask() {
 
 // Default Gulp task
 exports.default = series(
-  compilescss,
   parallel(optimizeimg, webpImage),
+  compilescss,
   htmlTask,
   jsMin,
   watchTask
