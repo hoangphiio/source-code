@@ -4,8 +4,8 @@ const autoprefixer = require("autoprefixer");
 const postcss = require("gulp-postcss");
 const minify = require("gulp-clean-css");
 const pug = require("gulp-pug");
-const browserSync = require("browser-sync").create();
 const terser = require("gulp-terser");
+const browserSync = require("browser-sync").create();
 
 // Optimize images
 async function optimizeimg() {
@@ -17,7 +17,8 @@ async function optimizeimg() {
         imagemin.optipng({ optimizationLevel: 2 }),
       ])
     )
-    .pipe(dest("dist/assets/img"));
+    .pipe(dest("dist/assets/img"))
+    .pipe(browserSync.stream());
 }
 
 // Convert images to WebP format
@@ -48,20 +49,24 @@ function compilescss() {
 function htmlTask() {
   return src("views/**/*.pug")
     .pipe(pug({ pretty: true }))
-    .pipe(dest("dist/html"))
+    .pipe(dest("dist/views"))
     .pipe(browserSync.stream());
 }
 
 // Minify JS
 function jsMin() {
-  return src("js/**/*.js").pipe(terser()).pipe(dest("dist/js"));
+  return src("js/**/*.js")
+    .pipe(terser())
+    .pipe(dest("dist/js"))
+    .pipe(browserSync.stream());
 }
 
 // Watch task
 function watchTask() {
   browserSync.init({
     server: {
-      baseDir: "dist",
+      baseDir: ["./", "./dist"],
+      directory: true,
     },
   });
 
