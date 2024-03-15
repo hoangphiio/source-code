@@ -1,1 +1,1 @@
-import demo from"demo";window.addEventListener("DOMContentLoaded",(()=>{demo()}));
+window.addEventListener("DOMContentLoaded",(()=>{}));

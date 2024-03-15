@@ -35,9 +35,9 @@ html(lang="en")
         meta(property='og:locale' content='vi_VN')
         meta(property='fb:pages' content='')
         meta(http-equiv='x-dns-prefetch-control' content='on')
+        link(rel="shorcut icon" href="/assets/img/favicon/favicon.ico")
 
         link(rel='stylesheet' href='/dist/css/style.css')
-        link(rel='stylesheet' href='/assets/icon/iconfont/style.css')
 
         script(src='/js/library/jquery/jquery-min.js')
 
@@ -53,4 +53,5 @@ html(lang="en")
         block footer
             include ../views/component/footer
 
-        script(src="/js/main.js" type="module")
+    script(src="/js/library/aos/aos.js")
+    script(src="/js/main.js" type="module" defer)

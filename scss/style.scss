@@ -1,3 +1,6 @@
+// Library
+@import url("../js/library/aos/aos.css");
+
 // core
 @import "../scss/core/base";
 @import "../scss/core/reset";
@@ -9,3 +12,4 @@
 @import "../scss/component/header";
 
 // layout
+@import "./layout/trang-chu";
