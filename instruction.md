@@ -19,6 +19,7 @@ _SCSS convert, min, and autoprefix_
 
 - npm install gulp-postcss autoprefixer gulp-sass gulp-clean-css --save-dev
 - npm install --save-dev gulp-sass gulp-autoprefixer gulp-clean-css
+- npm install --save-dev gulp-imagemin
 
 _JS min_
 
@@ -27,6 +28,10 @@ _JS min_
 _Image min and webp_
 
 - npm install --save-dev gulp-imagemin gulp-webp
+
+_Browser Sync_
+
+- npm install browser-sync gulp --save-dev
 
 5. Add gulpfile.js
 

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "gulp-pug": "^5.0.0",
     "gulp-uglifycss": "^1.1.0",
     "pug-cli": "^1.0.0-alpha6",
     "sass": "^1.71.1"
@@ -9,6 +10,8 @@
   "main": "index.js",
   "devDependencies": {
     "autoprefixer": "^10.4.18",
+    "browser-sync": "^3.0.2",
+    "connect-history-api-fallback": "^2.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^9.0.0",
     "gulp-clean-css": "^4.3.0",
