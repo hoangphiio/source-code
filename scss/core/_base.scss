@@ -23,9 +23,11 @@ html {
   font-size: 62.5%;
 }
 body {
+  color: #262626;
   font-size: 14px;
   line-height: 1.5;
   font-weight: 300;
+  font-family: "Be VietNam Pro", sans-serif;
 }
 select {
   outline: none;
@@ -51,7 +53,7 @@ img {
   margin: 0 auto;
   padding: 0 1.5rem;
   position: relative;
-  max-width: 120rem; 
+  max-width: 120rem;
 }
 .onscroll {
   touch-action: none;

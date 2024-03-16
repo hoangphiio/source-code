@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'iconfont';
+  src:  url('fonts/iconfont.eot?sl4bzp');
+  src:  url('fonts/iconfont.eot?sl4bzp#iefix') format('embedded-opentype'),
+    url('fonts/iconfont.ttf?sl4bzp') format('truetype'),
+    url('fonts/iconfont.woff?sl4bzp') format('woff'),
+    url('fonts/iconfont.svg?sl4bzp#iconfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="ic-"], [class*=" ic-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'iconfont' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ic-right-arrow:before {
+  content: "\e90a";
+}
+.ic-line:before {
+  content: "\e908";
+}
+.ic-three-dots:before {
+  content: "\e909";
+}
+.ic-up:before {
+  content: "\e906";
+}
+.ic-down:before {
+  content: "\e905";
+  color: #544837;
+}
+.ic-phone:before {
+  content: "\e907";
+}
+.ic-mail:before {
+  content: "\e904";
+}
+.ic-left:before {
+  content: "\e900";
+  color: #d9d9d9;
+}
+.ic-right:before {
+  content: "\e901";
+  color: #d9d9d9;
+}
+.ic-close:before {
+  content: "\e902";
+}
+.ic-search:before {
+  content: "\e903";
+  color: #544837;
+}
