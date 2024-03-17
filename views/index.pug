@@ -46,15 +46,15 @@ html(lang="en")
 
     title=title
     body    
-    section.section-page(class=pageClass)
-        block header
-            include ../views/component/header
+        section.section-page(class=pageClass)
+            block header
+                include ../views/component/header
 
-        main.main(class=mainClass)
-            block container
+            main.main(class=mainClass)
+                block container
 
-        block footer
-            include ../views/component/footer
+            block footer
+                include ../views/component/footer
 
-    script(src="/js/library/aos/aos.js")
-    script(src="/js/main.js" type="module" defer)
+        script(src="/js/library/aos/aos.js")
+        script(src="/js/main.js" type="module" defer)

@@ -1,1 +1,66 @@
-footer.footer
+footer.footer.section-background
+    .container 
+        .footer-top 
+            .footer-top-col 
+                .footer-logo 
+                    img(srcset="/assets/img/logo/logo-vuthao.svg" loading="lazy")
+            .footer-top-col 
+                .footer-social
+                    each socialData in[{class: "youtube", img: "/assets/img/icon/youtube.svg"}, {class: "linkedin", img: "/assets/img/icon/linkedin.svg"}, {class: "facebook", img: "/assets/img/icon/facebook.svg"}]
+                        a(class=`translate-y ${socialData.class}`)
+                            img(srcset=`${socialData.img}`, alt="")
+        .footer-center 
+            .footer-center-col
+                .footer-center-block
+                    ul.list 
+                        li.item
+                            a(href="#") Công ty Cổ Phần Công Nghệ Vũ Thảo
+                        li.item
+                            p Mã số thuế:
+                                span 0301805897
+                        li.item
+                            p Người đại diện: Lương Minh Tuấn
+                        li.item
+                            a.email(href="#") Email:
+                                span lienhe@vuthao.com
+                        li.item 
+                            a.hotline(href="#") Hotline:
+                                span 090 117 0659
+                    .footer-check 
+                        img(srcset="/dist/assets/img/footer/logo-bo-cong-thuong.webp 2x" loading="lazy")
+            .footer-center-col
+                .footer-center-block
+                    h3 Về chúng tôi
+                    ul.list 
+                        each abouUsData in [{title: "Giới thiệu", href: "#"}, {title: "Cột mốc phát triển", href: "#"}, {title: "Tầm nhìn & sứ mệnh", href: "#"}, {title: "Cam kết chất lượng và dich vụ", href: "#"}, {title: "Văn hóa công ty", href: "#"}]
+                            li.item 
+                                a(href= abouUsData.href)= abouUsData.title
+            .footer-center-col
+                .footer-center-block
+                    h3 Sản phẩm
+                    ul.list 
+                        each productData in [{title: "DPM - Digital Process Management", href: "#"}, {title: "DSIGN - Digital Signature Portal", href: "#"}, {title: "DCM - Digital Content Management", href: "#"}, {title: "eOffice - Văn phòng điện tử", href: "#"}, {title: "Enterprise Portal - Cổng thông tin doanh nghiệp", href: "#"}]
+                            li.item 
+                                a(href= productData.href)= productData.title 
+            .footer-center-col
+                .footer-center-block
+            .footer-center-col
+                .footer-center-block
+                    h3 Tin tức
+                    ul.list 
+                        each newData in [{title: "Hoạt động - Sự kiện", href: "#"}, {title: "Tin tức sản phẩm", href: "#"}, {title: "Kiến thức hữu ích", href: "#"}]
+                            li.item 
+                                a(href= newData.href)= newData.title 
+            .footer-center-col
+                .footer-center-block
+                    h3 Tuyển dụng
+        .footer-bottom
+            .footer-bottom-col
+                .footer-policy
+                    a(href="#") Điều khoản quy định 
+            .footer-bottom-col
+                .footer-policy
+                    a(href="#") Chính sách quy định 
+            .footer-bottom-col
+                .footer-policy
+                    a(href="#") Chính sách chất lương
