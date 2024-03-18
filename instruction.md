@@ -1,25 +1,24 @@
 1. Cài đặt nodejs
 
+- npm install
+- npm install node-sass
+
 2. Lệnh chạy Pug
 
 - npm install -g pug
-- npm install pug cli
+- npm install pug-cli
+- npm install gulp-pug
 - pug file.pug --watch
 
-3. Lệnh chạy Scss (Có thể chạy bằng lệnh npm run scss khi cài đặt trình biên dịch Sass)
-
-- scss ./scss/style.scss ./css/style.css --watch
-
-4. Lệnh chạy Gulp
+3. Lệnh chạy Gulp
 
 - npm install -g gulp
 - npm install gulp-sass --save-dev
 
 _SCSS convert, min, and autoprefix_
 
-- npm install gulp-postcss autoprefixer gulp-sass gulp-clean-css --save-dev
-- npm install --save-dev gulp-sass gulp-autoprefixer gulp-clean-css
-- npm install --save-dev gulp-imagemin
+- npm install gulp-postcss gulp-autoprefixer gulp-sass gulp-clean-css --save-dev
+- npm install --save-dev gulp-imagemin gulp-webp
 
 _JS min_
 
@@ -33,8 +32,8 @@ _Browser Sync_
 
 - npm install browser-sync gulp --save-dev
 
-5. Add gulpfile.js
+4. Add gulpfile.js
 
-6. Tạo function, watchtask and default gulp
+5. Tạo function, watchtask and default gulp
 
-7. Run gulp
+6. Run gulp

@@ -13,7 +13,7 @@ footer.footer.section-background
             .footer-center-col
                 .footer-center-block
                     ul.list 
-                        li.item
+                        li.item 
                             a(href="#") Công ty Cổ Phần Công Nghệ Vũ Thảo
                         li.item
                             p Mã số thuế:
@@ -56,11 +56,6 @@ footer.footer.section-background
                     h3 Tuyển dụng
         .footer-bottom
             .footer-bottom-col
-                .footer-policy
-                    a(href="#") Điều khoản quy định 
-            .footer-bottom-col
-                .footer-policy
-                    a(href="#") Chính sách quy định 
-            .footer-bottom-col
-                .footer-policy
-                    a(href="#") Chính sách chất lương
+                each policyData in [{title: "Điều khoản quy định ", href: "#"}, {title: "Chính sách quy định ", href: "#"}, {title: "Chính sách chất lương", href: "#"}]
+                    .footer-policy
+                        a(href=policyData.href)= policyData.title
