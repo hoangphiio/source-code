@@ -1,0 +1,45 @@
+include ../_mixins/_all
+
+block vars
+  -title        = ''
+  -description  = ''
+  -keywords     = ''
+  -og_title     = ''
+  -url          = ''
+  -pageID       = ''
+  -path         = '.'
+
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='./assets/js/library/fontawesome/css/all.css')
+    link(rel='stylesheet' href='./assets/js/library/fontawesome/fontawesome/fontawesome.css')
+    link(rel='stylesheet' href='./assets/js/library/aos/aos.css')
+    if pageID == 'homepage'
+      link(rel='stylesheet' href='./assets/js/library/swiper/swiper-bundle.min.css')
+    if pageID == 'about'
+      link(rel='stylesheet' href='./assets/js/library/fancybox/fancybox.css')
+    if pageID == 'homepage'
+      link(rel='stylesheet' href='./assets/css/home.css')
+    if pageID == 'about'
+      link(rel='stylesheet' href='./assets/css/about.css')
+    link(rel='stylesheet' href='./assets/css/common.css')
+    link(rel='icon' type='image/png' href='./assets/images/mona.png')
+    title Template
+
+  body(class=pageID)
+    include ../_modules/header
+    main.main
+      block container
+    include ../_modules/footer
+    script(src='./assets/js/library/jquery/jquery.js')
+    script(src='./assets/js/library/aos/aos.js')
+    if pageID == 'homepage'
+      script(src='./assets/js/library/swiper/swiper-bundle.min.js')
+    if pageID == 'about'
+      script(src='./assets/js/library/fancybox/fancybox.umd.js')
+    script(src='./assets/js/main.js' type='module')
+    block scripts

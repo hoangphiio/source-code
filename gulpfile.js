@@ -1,86 +1,104 @@
-const { src, dest, watch, series, parallel } = require("gulp");
-const sass = require("gulp-sass")(require("sass"));
-const autoprefixer = require("autoprefixer");
-const postcss = require("gulp-postcss");
-const minify = require("gulp-clean-css");
+const gulp = require("gulp");
+const del = require("del");
 const pug = require("gulp-pug");
-const terser = require("gulp-terser");
+const sass = require("gulp-sass");
+const sourcemaps = require("gulp-sourcemaps");
+const path = require("path");
 const browserSync = require("browser-sync").create();
+const plumber = require("gulp-plumber");
+const tinypng = require("gulp-tinypng-compress");
+const gulpIf = require("gulp-if");
+const pathImg = "./dist/assets/images/";
+const fs = require("fs");
+function copyAsset() {
+  return gulp.src(["src/assets/**/*"]).pipe(gulp.dest("./dist/assets"));
+}
 
-// Optimize images
-async function optimizeimg() {
-  const imagemin = await import("gulp-imagemin");
-  return src("assets/img/**/*.{jpg,png}")
-    .pipe(
-      imagemin.default([
-        imagemin.mozjpeg({ quality: 80, progressive: true }),
-        imagemin.optipng({ optimizationLevel: 2 }),
-      ])
-    )
-    .pipe(dest("dist/assets/img"))
+function cleanSource() {
+  return del(["dist/**", "!dist"]);
+}
+
+//compile scss into css
+function style() {
+  return gulp
+    .src("src/scss/**/*.scss")
+    .pipe(sourcemaps.init())
+    .pipe(sass().on("error", sass.logError))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest("./dist/assets/css"))
     .pipe(browserSync.stream());
 }
+//Tiny PNG
+var API_KEY = ["VLMNbRLp20d1zb8sMthZWtddyNJRWBLs"];
 
-// Convert images to WebP format
-async function webpImage() {
-  const imagewebp = await import("gulp-webp");
-  return src("assets/img/**/*.{jpg,png}")
-    .pipe(imagewebp.default())
-    .pipe(dest("dist/assets/img"));
+function optimizeImages() {
+  const sizeLimit = 1024 * 1024;
+
+  return gulp
+    .src("src/assets/images/**/*.{png,jpg,jpeg}")
+    .pipe(plumber())
+    .pipe(
+      gulpIf(
+        (file) => {
+          const stats = fs.statSync(file.path);
+          return stats.size > sizeLimit;
+        },
+        tinypng({
+          key: API_KEY,
+          sigFile: "images/.tinypng-sigs",
+          log: true,
+        })
+      )
+    )
+    .pipe(gulp.dest("dist/assets/images"));
 }
 
-// Compile SCSS, autoprefix, and minify CSS
-function compilescss() {
-  return src("scss/**/*.scss", { sourcemaps: true })
+//compile jade into html
+function html() {
+  return gulp
+    .src([
+      "src/pug/**/*.pug",
+      "!src/pug/_layout/*.pug",
+      "!src/pug/_modules/*.pug",
+      "!src/pug/_mixins/*.pug",
+    ])
     .pipe(
-      sass({
-        sourceMap: true,
-        uglyComments: true,
-        onError: sass.logError,
+      pug({
+        doctype: "html",
+        pretty: true,
       })
     )
-    .pipe(postcss([autoprefixer("last 2  versions")]))
-    .pipe(minify({ compatibility: "ie8", sourceMap: true }))
-    .pipe(dest("dist/css", { sourcemaps: "." }))
+    .pipe(gulp.dest("./dist"))
     .pipe(browserSync.stream());
 }
 
-/** HTML Task */
-function htmlTask() {
-  return src("views/**/*.pug")
-    .pipe(pug({ pretty: true }))
-    .pipe(dest("dist/views"))
-    .pipe(browserSync.stream());
-}
-
-// Minify JS
-function jsMin() {
-  return src("js/**/*.js")
-    .pipe(terser())
-    .pipe(dest("dist/js"))
-    .pipe(browserSync.stream());
-}
-
-// Watch task
-function watchTask() {
+function watch() {
   browserSync.init({
     server: {
-      baseDir: ["./", "./dist"],
-      directory: true,
+      baseDir: "./dist",
     },
+    port: 4000,
   });
-
-  watch("views/**/*.pug", htmlTask);
-  watch("scss/**/*.scss", compilescss);
-  watch("js/**/*.js", jsMin);
-  watch("assets/img/**/*.{jpg,png}", series(optimizeimg, webpImage));
+  gulp.watch("src/assets/**/*", copyAsset).on("change", browserSync.reload);
+  gulp.watch("src/scss/**/*.scss", style).on("change", browserSync.reload);
+  gulp.watch("src/pug/**/*.pug", html).on("change", browserSync.reload);
 }
 
-// Default Gulp task
-exports.default = series(
-  parallel(optimizeimg, webpImage),
-  compilescss,
-  htmlTask,
-  jsMin,
-  watchTask
+// define complex tasks
+const build = gulp.series(
+  cleanSource,
+  style,
+  html,
+  copyAsset,
+  optimizeImages,
+  watch
 );
+
+// export tasks
+exports.cleanSource = cleanSource;
+exports.style = style;
+exports.html = html;
+exports.build = build;
+exports.optimage = optimizeImages;
+exports.watch = watch;
+exports.default = build;
