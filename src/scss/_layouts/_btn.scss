@@ -1,0 +1,14 @@
+.btn {
+  color: white;
+  user-select: none;
+  padding: 1rem 3rem;
+  display: inline-flex;
+  border-radius: 0.5rem;
+  background-color: $color-text;
+  @include transition;
+
+  &:hover {
+    color: $color-text;
+    background-color: #939da5;
+  }
+}

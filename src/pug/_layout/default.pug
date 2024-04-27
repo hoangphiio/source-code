@@ -18,28 +18,21 @@ html
     link(rel='stylesheet' href='./assets/js/library/fontawesome/css/all.css')
     link(rel='stylesheet' href='./assets/js/library/fontawesome/fontawesome/fontawesome.css')
     link(rel='stylesheet' href='./assets/js/library/aos/aos.css')
-    if pageID == 'homepage'
-      link(rel='stylesheet' href='./assets/js/library/swiper/swiper-bundle.min.css')
-    if pageID == 'about'
-      link(rel='stylesheet' href='./assets/js/library/fancybox/fancybox.css')
-    if pageID == 'homepage'
-      link(rel='stylesheet' href='./assets/css/home.css')
-    if pageID == 'about'
-      link(rel='stylesheet' href='./assets/css/about.css')
+    //- Font
+    link(rel='preconnect' href='https://fonts.googleapis.com')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+    link(href='https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap' rel='stylesheet')
+    //- CSS All
     link(rel='stylesheet' href='./assets/css/common.css')
+
+    if pageID == 'homepage'
+      link(rel="stylesheet" href="./assets/css/home.css")
     link(rel='icon' type='image/png' href='./assets/images/mona.png')
     title Template
 
   body(class=pageID)
-    include ../_modules/header
     main.main
       block container
-    include ../_modules/footer
     script(src='./assets/js/library/jquery/jquery.js')
-    script(src='./assets/js/library/aos/aos.js')
-    if pageID == 'homepage'
-      script(src='./assets/js/library/swiper/swiper-bundle.min.js')
-    if pageID == 'about'
-      script(src='./assets/js/library/fancybox/fancybox.umd.js')
     script(src='./assets/js/main.js' type='module')
     block scripts

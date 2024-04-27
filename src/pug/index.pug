@@ -12,3 +12,90 @@ block vars
 block scripts
 
 block container
+  section.person
+    .darkmore
+      input#darkmode-toggle(type="checkbox" class="darkmore-only")
+      label(for="darkmode-toggle" class="toggle")
+        span Toggle dark mode
+    .person-wrap
+      .person-inner
+        .person-name
+          .name-user
+            +img("home/user.png")
+          .name-box
+            .name
+              h1.title Nguyễn Văn A
+              .location
+                +img('home/vietnam.png')
+                span.desc Ho Chi Minh, Viet Nam
+        .person-exp
+          ul.exp-list
+            each expData in [{title: "Experience", desc: "2 Years"}, {title: "Candidate Budget", desc: "3L"}, {title: "Rejected", desc: "12"}, {title: "Hired", desc: "10"}]
+              li.exp-item
+                .item
+                  span=expData.title
+                  span=expData.desc
+        .person-desc
+          a.desc-viewmore(href="#!")
+            span.desc Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed corrupti hic pariatur doloremque quam saepe minus. Necessitatibus voluptates maiores iste, consequatur voluptate repellendus culpa eos quasi, dolores nihil laboriosam ut. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas architecto, dolorum tenetur libero earum perferendis modi error in nostrum sequi facilis. Neque commodi quo dolor, non placeat nihil. Ab, quisquam.
+        .person-skill
+          +title("Skill")
+          .skill
+            .skill-list
+              .skill-item
+                .skill-card
+                  +img("home/check.png")
+                  span Angular
+              .skill-item
+                .skill-card
+                  +img("home/check.png")
+                  span JavaScripts
+              .skill-item
+                .skill-card
+                  +img("home/check.png")
+                  span UI
+              .skill-detail(style="display: none")
+                .skill-item
+                  .skill-card
+                    +img("home/check.png")
+                    span UX
+                .skill-item
+                  .skill-card
+                    +img("home/check.png")
+                    span ReactJS
+                .skill-item
+                  .skill-card
+                    +img("home/check.png")
+                    span Pug
+            .skill-btn.btn-hidden
+              a#show.view-more(href="#!") View More
+        .person-contact
+          +title("Contact Detail")
+          each contactData in [{img: "home/telephone.png", title: "(405) 555-0128"}, {img: "home/send.png", title: "jackson.graham@example.com"}]
+            .person-contact-box
+              a(href="#!")
+                +img(contactData.img)
+                span=contactData.title
+        .person-calendar
+          .calendar
+            .calendar-wrap
+              .calendar-col
+                .calendar-date
+                  span.title Date
+                  time 14 April 2024, IST
+                .calendar-time
+                  .box
+                    .box-img.box-1
+                      +img("home/clock.png")
+                    time.time 9:00AM
+                  .border
+                  .box
+                    .box-img.box-2
+                      +img("home/check.png")
+                    time.time 10:30AM
+              .calendar-col
+                .calendar-date
+                  span.title Meeting On
+                  span Gmeet
+        .person-action
+          a.btn.btn-fb(href="#!") Write a FeedBack

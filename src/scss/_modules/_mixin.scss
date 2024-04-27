@@ -1,32 +1,4 @@
 /*------------------------------------------------------------
-	Clearfix
-------------------------------------------------------------*/
-@mixin clear {
-  *zoom: 1;
-  &:after {
-    display: block;
-    content: "";
-    clear: both;
-  }
-}
-
-/*------------------------------------------------------------
-	Font
-------------------------------------------------------------*/
-@mixin mincyo() {
-  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3",
-    "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
-}
-@mixin mincho() {
-  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3",
-    "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
-}
-
-@mixin monstfont() {
-  font-family: "Montserrat", sans-serif;
-}
-
-/*------------------------------------------------------------
 	Media
 ------------------------------------------------------------*/
 @mixin max($point) {
@@ -36,36 +8,6 @@
 }
 @mixin min($point) {
   @media screen and (min-width: $point) {
-    @content;
-  }
-}
-@mixin sp {
-  @media screen and (max-width: #{$breakpoint1}) {
-    @content;
-  }
-}
-@mixin pc {
-  @media screen and (min-width: #{$breakpoint2}) {
-    @content;
-  }
-}
-@mixin min-sp {
-  @media screen and (min-width: #{$point}) {
-    @content;
-  }
-}
-@mixin tab-land {
-  @media screen and (max-width: 1024px) {
-    @content;
-  }
-}
-@mixin tab-port {
-  @media screen and (max-width: 960px) {
-    @content;
-  }
-}
-@mixin tab-mini {
-  @media screen and (max-width: 768px) {
     @content;
   }
 }
@@ -79,9 +21,9 @@
 }
 @mixin flex-center {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
 }
 @mixin flex-icenter {
   display: flex;
@@ -89,10 +31,12 @@
 }
 @mixin flex-jcenter {
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 @mixin flex-jbetween {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -100,6 +44,7 @@
 @mixin transition($duration: 0.3s, $timing-function: ease) {
   transition: $duration $timing-function;
 }
+
 @mixin imgCover {
   position: absolute;
   top: 50%;
@@ -109,6 +54,7 @@
   height: 100%;
   object-fit: cover;
 }
+
 @mixin imgContain {
   position: absolute;
   top: 50%;
@@ -118,6 +64,7 @@
   height: 100%;
   object-fit: contain;
 }
+
 @mixin lc($value) {
   display: -webkit-box;
   text-overflow: ellipsis;
@@ -125,8 +72,25 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
 @mixin bgImage($position: center, $size: cover, $repeat: no-repeat) {
   background-repeat: $repeat;
   background-size: $size;
   background-position: $position;
+}
+
+@mixin transition {
+  transition: 0.4s ease-in-out;
+}
+
+/*------------------------------------------------------------
+	Clearfix
+------------------------------------------------------------*/
+@mixin clear {
+  *zoom: 1;
+  &:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
 }

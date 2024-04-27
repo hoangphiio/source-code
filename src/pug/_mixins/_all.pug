@@ -1,2 +1,7 @@
-mixin images(name)
+//- Image
+mixin img(name)
   img(src=path+"/assets/images/" + name, alt="" title="" loading="lazy")
+
+mixin title(desc)
+  .tt-title
+    h2=desc
